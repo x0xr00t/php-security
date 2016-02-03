@@ -47,29 +47,46 @@ In the first time you should generate the extension scripts and files.
 Then install the .ini of the mod, and copy it to libraries path.
 
 Finally put the php/ directory contents inside the hardcoded path:
+
 /etc/php/mods-available/security/
+
 ... prepend.php
+
 ... whitelist.php
+
 ... slacklog.php
+
 ... ..
+
 ... .
+
 
 #### How to compile the extension ?
 
-$ git clone https://github.com/aberope/php-security.git
-$ cd php-security/ext
-$ make clean
-$ phpize
-$ ./configure
-$ make
+git clone https://github.com/aberope/php-security.git
+
+cd php-security/ext
+
+make clean
+
+phpize
+
+./configure
+
+make
 
 #### How to enable the extension
 
 sudo cp ini/security.ini /etc/php/mods-available
+
 sudo mkdir /etc/php/mods-available/security
+
 sudo cp whitelist.php prepend.php slackbot.php /etc/php/mods-available/security
-##### Note: in the following command change the apache2 path by the custom one.
+
+## Note: in the following command change the apache2 path by the custom one.
+
 sudo ln -s /etc/php/mods-available/security.ini /etc/php/7.0/apache2/conf.d/20-security.ini
+
 sudo cp ext/modules/security.so /usr/lib/php/20151012/ 
 
 #### Managing whitelist
@@ -83,4 +100,6 @@ Any else execution not called from those files in $whitelist, will be logged and
 For watching the logs, you can just connect to slack and change the URL
 for the posting, or execute the following command which takes the logs
 from the syslog file:
-$ tail -f  /var/log/syslog | grep security
+
+tail -f  /var/log/syslog | grep php-security
+
