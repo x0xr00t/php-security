@@ -83,7 +83,7 @@ sudo mkdir /etc/php/mods-available/security
 
 sudo cp whitelist.php prepend.php slackbot.php /etc/php/mods-available/security
 
-## Note: in the following command change the apache2 path by the custom one.
+##### Note: use apache2 installation dir
 
 sudo ln -s /etc/php/mods-available/security.ini /etc/php/7.0/apache2/conf.d/20-security.ini
 
