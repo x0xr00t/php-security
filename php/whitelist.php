@@ -1,0 +1,4 @@
+<?php
+$whitelist = array(
+);
+?>

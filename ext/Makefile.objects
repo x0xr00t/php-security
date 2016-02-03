@@ -1,0 +1,8 @@
+security.lo: /home/pinkiepunky/php-security/ext/security.c
+	$(LIBTOOL) --mode=compile $(CC) -Wdeclaration-after-statement -Werror -Wall -Wno-deprecated-declarations -I. -I/home/pinkiepunky/php-security/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/pinkiepunky/php-security/ext/security.c -o security.lo 
+$(phplibdir)/security.la: ./security.la
+	$(LIBTOOL) --mode=install cp ./security.la $(phplibdir)
+
+./security.la: $(shared_objects_security) $(SECURITY_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_security) $(SECURITY_SHARED_LIBADD)
+
