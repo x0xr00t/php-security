@@ -1,6 +1,6 @@
 # What is php-security ?
 
-![alt tag](https://drive.google.com/file/d/0B4EKL_0QRk-cOF9Jd3lwQ09TUnM/view?usp=sharing)
+![alt tag](https://raw.githubusercontent.com/aberope/php-security/master/PHP%20Security%20Architecture%20(1).png)
 
 
 This package is composed by two parts of difference:
