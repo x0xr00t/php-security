@@ -49,49 +49,34 @@ inside the whitelist array, it'll log in #slack or in syslog. Depending on your 
 In the first time you should generate the extension scripts and files.
 Then install the .ini of the mod, and copy it to libraries path.
 
-Finally put the php/ directory contents inside the hardcoded path:
+Finally put the `php/` directory contents inside the hardcoded path:
 
-/etc/php/mods-available/security/
-
-... prepend.php
-
-... whitelist.php
-
-... slacklog.php
-
-... ..
-
-... .
-
+`/etc/php/mods-available/security/`
+`prepend.php`
+`whitelist.php`
+`slacklog.php`
 
 #### How to compile the extension ?
-
+```
 git clone https://github.com/aberope/php-security.git
-
 cd php-security/ext
-
 make clean
-
 phpize
-
 ./configure
-
 make
+```
 
 #### How to enable the extension
-
+```
 sudo cp ini/security.ini /etc/php/mods-available
-
 sudo mkdir /etc/php/mods-available/security
-
 sudo cp whitelist.php prepend.php slackbot.php /etc/php/mods-available/security
-
+```
 ##### Note: use apache2 installation dir
-
+```
 sudo ln -s /etc/php/mods-available/security.ini /etc/php/7.0/apache2/conf.d/20-security.ini
-
-sudo cp ext/modules/security.so /usr/lib/php/20151012/ 
-
+sudo cp ext/modules/security.so /usr/lib/php/20151012/
+```
 #### Managing whitelist
 
 Edit /etc/php/mods-available/security/whitelist.php and add the corresponding files to be allowed.
@@ -104,6 +89,8 @@ For watching the logs, you can just connect to slack and change the URL
 for the posting, or execute the following command which takes the logs
 from the syslog file:
 
-tail -f  /var/log/syslog | grep php-security
+`tail -f  /var/log/syslog | grep php-security`
+
+
 
 Hope this helps.
