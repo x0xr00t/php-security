@@ -10,8 +10,8 @@ This package is composed by two parts of difference:
 
 The functionality of this software is to hook each php function which allows
 the execution of shell commands, they are: system, exec, passthru, shell_exec,
-popen and proc_open. If you know someone else you can send me an email:
-abel.romero [at] devopensource.com.
+popen and proc_open. If you know some other else you can send me an email:
+abel [at] abelromero.com.
 
 By hooking those functions, we can control the execution of those named.
 When an script calls some of those ones, we get inside a function in a file
@@ -24,27 +24,27 @@ which supports posting on #Slack and syslog of the linux os.
 
 The module should appear on phpinfo() webpage if it's succesfully loaded.
 
-You should install php/ directory inside a root managed directory,
-but you can include inside the php library of your vhost. Another option
+You should install php/ directory inside a root user managed directory,
+but you can include inside the php library of your vhost... another option
 is to define the directory into the include_dir directive, but the path is hardcoded to /etc/php/mods-available/security/prepend.php .
 
 Once the hooked function is called, the execution flow is redirected to a 
-another function by a jmp injection inside its content. And those functions
+another function by a jmp. And those functions
 are dedicated to each hooked one. Those for shell execution, are already
 coded and they are: filtered_exec, filtered_system, etc.
 
-The unhook_func() is called, to restore the opcodes. When the function in
-question is restored, a call is made to the real function. But before
-the whitelist is queried for allowing or denying the execution.
+The unhook_func() is called, to restore the opcodes, and should be removed in newer versions as described in TODO, because it's not well done. 
+
+When the function in question is restored, a call is made to the real function, but will be replaced by a trampoline in a future version. Before calling or not the shell execution command function, the whitelist is queried for allowing or denying the execution.
 
 Another file inside php/ is the whitelist.php. Which has an array where
-the absolute paths of the php scripts which are allowed to execute, are defined.
+the absolute paths of the php scripts which are allowed to execute, are defined. Here you must define carefully each script
+which is able to execute shell commands, and I recommend you that an IT Security expert helps you to pentest those scripts, before whitelisting them, if you are going to use this module.
 
-Then the function is re-hooked.
+Then the function is re-hooked. (But that shouldn't happen on first release).
 
 If an script calls those hooked functions, and the path of the script is not
-inside the whitelist array, it'll log in #slack or in syslog.
-You should have a look to the php/ functions.
+inside the whitelist array, it'll log in #slack or in syslog. Depending on your configuration. You should have a look to the php/ functions to configure it.
 
 In the first time you should generate the extension scripts and files.
 Then install the .ini of the mod, and copy it to libraries path.
@@ -106,3 +106,4 @@ from the syslog file:
 
 tail -f  /var/log/syslog | grep php-security
 
+Hope this helps.
