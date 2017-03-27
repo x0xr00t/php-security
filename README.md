@@ -44,7 +44,7 @@ which is able to execute shell commands, and I recommend you that an IT Security
 Then the function is re-hooked. (But that shouldn't happen on first release).
 
 If an script calls those hooked functions, and the path of the script is not
-inside the whitelist array, it'll log in #slack or in syslog. Depending on your configuration. You should have a look to the php/ functions to configure it.
+inside the whitelist array, it'll log in #slack or in syslog. Depending on your needs, you can comment the corresponding lines in `php/prepend.php`. Have a look to the functions on this file, to configure the behaivour of this module.
 
 In the first time you should generate the extension scripts and files.
 Then install the .ini of the mod, and copy it to libraries path.
