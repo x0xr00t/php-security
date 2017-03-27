@@ -79,7 +79,7 @@ sudo cp ext/modules/security.so /usr/lib/php/20151012/
 ```
 #### Managing whitelist
 
-Edit /etc/php/mods-available/security/whitelist.php and add the corresponding files to be allowed.
+Edit `/etc/php/mods-available/security/whitelist.php` and add the corresponding files to be allowed.
 
 Any else execution not called from those files in $whitelist, will be logged and blocked.
 
