@@ -1,3 +1,7 @@
+/*
+ * php-security by Devopensource Security Team
+ *
+ */
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -61,15 +65,17 @@ extern PHP_FUNCTION(popen);
 void security_log(const char *fmt, ...)
 {
 	va_list arg;
-	FILE *fh;
+	//FILE *fh;
 
-	fh = fopen("/tmp/php-security.log", "a");
-	if(fh == NULL) return;
+	//fh = fopen("/tmp/php-security.log", "a");
+	//if(fh == NULL) return;
+	char buf[4096];
 	/* Write the error message */
 	va_start(arg, fmt);
-	vfprintf(fh, fmt, arg);
+	vsnprintf(buf, 4096, fmt, arg);
+	php_log_err(buf);
 	va_end(arg);
-	fclose(fh);
+	//fclose(fh);
 }
 
 int unhook_func(void *fname, unsigned int fid)
@@ -98,7 +104,7 @@ int unhook_func(void *fname, unsigned int fid)
 	return 0;
 }
 
-int allowed_execution()
+int security_is_execution_allowed()
 {
 	zval func_name, retval;
 	ZVAL_STRING(&func_name, "security_is_execution_allowed");
@@ -167,7 +173,7 @@ PHP_FUNCTION(filtered_exec)
 {
 	//security_log("incoming vars: %p %p\n", execute_data, return_value);
   //printf("iNSiDe filtered_exec\n");
-  if (allowed_execution() == 0)
+  if (security_is_execution_allowed() == 0)
   {
 		//security_log("unhook at follows:");
     if (unhook_func(zif_exec, 0) == -1) {
@@ -187,7 +193,7 @@ PHP_FUNCTION(filtered_passthru)
 {
 	//security_log("incoming vars: %p %p\n", execute_data, return_value);
   //printf("iNSiDe filtered_exec\n");
-  if (allowed_execution() == 0)
+  if (security_is_execution_allowed() == 0)
   {
 		//security_log("unhook at follows:");
     if (unhook_func(zif_passthru, 1) == -1) {
@@ -207,7 +213,7 @@ PHP_FUNCTION(filtered_system)
 {
 	//security_log("incoming vars: %p %p\n", execute_data, return_value);
   //printf("iNSiDe filtered_exec\n");
-  if (allowed_execution() == 0)
+  if (security_is_execution_allowed() == 0)
   {
 		//security_log("unhook at follows:");
     if (unhook_func(zif_system, 2) == -1) {
@@ -227,7 +233,7 @@ PHP_FUNCTION(filtered_shell_exec)
 {
 	//security_log("incoming vars: %p %p\n", execute_data, return_value);
   //printf("iNSiDe filtered_exec\n");
-  if (allowed_execution() == 0)
+  if (security_is_execution_allowed() == 0)
   {
 		//security_log("unhook at follows:");
     if (unhook_func(zif_shell_exec, 3) == -1) {
@@ -247,7 +253,7 @@ PHP_FUNCTION(filtered_proc_open)
 {
 	//security_log("incoming vars: %p %p\n", execute_data, return_value);
   //printf("iNSiDe filtered_exec\n");
-  if (allowed_execution() == 0)
+  if (security_is_execution_allowed() == 0)
   {
 		//security_log("unhook at follows:");
     if (unhook_func(zif_proc_open, 4) == -1) {
@@ -267,7 +273,7 @@ PHP_FUNCTION(filtered_popen)
 {
 	//security_log("incoming vars: %p %p\n", execute_data, return_value);
   //printf("iNSiDe filtered_exec\n");
-  if (allowed_execution() == 0)
+  if (security_is_execution_allowed() == 0)
   {
 		//security_log("unhook at follows:");
     if (unhook_func(zif_popen, 5) == -1) {
@@ -360,5 +366,6 @@ PHP_MINFO_FUNCTION(security)
 	php_info_print_table_row(2, "Version", PHP_SECURITY_VERSION);
 	php_info_print_table_row(2, "Whitelisted functions", "exec, passthru, system, shell_exec, popen and proc_open");
 	php_info_print_table_row(2, "Author", "Devopensource Security Team");
+	php_info_print_table_row(2, "Coder", "Abel Romero Pérez <abel.romero@devopensource.com>");
 	php_info_print_table_end();
 }

@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * php-security by Devopensource Security Team
+ *
+ */
 function pastebin_login() {
   $api_dev_key = $_ENV['api_dev_key'];
   $api_user_name = $_ENV['api_user_name'];

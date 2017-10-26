@@ -1,12 +1,12 @@
-srcdir = /home/pinkiepunky/php-security/ext
-builddir = /home/pinkiepunky/php-security/ext
-top_srcdir = /home/pinkiepunky/php-security/ext
-top_builddir = /home/pinkiepunky/php-security/ext
-EGREP = /bin/grep -E
-SED = /bin/sed
+srcdir = /Users/aberope/php-security/ext
+builddir = /Users/aberope/php-security/ext
+top_srcdir = /Users/aberope/php-security/ext
+top_builddir = /Users/aberope/php-security/ext
+EGREP = /usr/local/bin/ggrep -E
+SED = /usr/local/bin/gsed
 CONFIGURE_COMMAND = './configure'
 CONFIGURE_OPTIONS =
-SHLIB_SUFFIX_NAME = so
+SHLIB_SUFFIX_NAME = dylib
 SHLIB_DL_SUFFIX_NAME = so
 ZEND_EXT_TYPE = zend_extension
 RE2C = exit 0;
@@ -17,12 +17,12 @@ PHP_MODULES = $(phplibdir)/security.la
 PHP_ZEND_EX =
 all_targets = $(PHP_MODULES) $(PHP_ZEND_EX)
 install_targets = install-modules install-headers
-prefix = /usr
+prefix = /usr/local/Cellar/php72/7.2.0beta3_5
 exec_prefix = $(prefix)
 libdir = ${exec_prefix}/lib
-prefix = /usr
-phplibdir = /home/pinkiepunky/php-security/ext/modules
-phpincludedir = /usr/include/php/20151012
+prefix = /usr/local/Cellar/php72/7.2.0beta3_5
+phplibdir = /Users/aberope/php-security/ext/modules
+phpincludedir = /usr/local/Cellar/php72/7.2.0beta3_5/include/php
 CC = cc
 CFLAGS = -g -O2
 CFLAGS_CLEAN = $(CFLAGS)
@@ -31,16 +31,16 @@ CPPFLAGS = -DHAVE_CONFIG_H
 CXX =
 CXXFLAGS =
 CXXFLAGS_CLEAN = $(CXXFLAGS)
-EXTENSION_DIR = /usr/lib/php/20151012
-PHP_EXECUTABLE = /usr/bin/php7.0
+EXTENSION_DIR = /usr/local/Cellar/php72/7.2.0beta3_5/lib/php/extensions/no-debug-non-zts-20170718
+PHP_EXECUTABLE = /usr/local/Cellar/php72/7.2.0beta3_5/bin/php
 EXTRA_LDFLAGS =
 EXTRA_LIBS =
-INCLUDES = -I/usr/include/php/20151012 -I/usr/include/php/20151012/main -I/usr/include/php/20151012/TSRM -I/usr/include/php/20151012/Zend -I/usr/include/php/20151012/ext -I/usr/include/php/20151012/ext/date/lib
+INCLUDES = -I/usr/local/Cellar/php72/7.2.0beta3_5/include/php -I/usr/local/Cellar/php72/7.2.0beta3_5/include/php/main -I/usr/local/Cellar/php72/7.2.0beta3_5/include/php/TSRM -I/usr/local/Cellar/php72/7.2.0beta3_5/include/php/Zend -I/usr/local/Cellar/php72/7.2.0beta3_5/include/php/ext -I/usr/local/Cellar/php72/7.2.0beta3_5/include/php/ext/date/lib
 LFLAGS =
 LDFLAGS =
 SHARED_LIBTOOL =
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
-SHELL = /bin/bash
+SHELL = /bin/sh
 INSTALL_HEADERS =
 mkinstalldirs = $(top_srcdir)/build/shtool mkdir -p
 INSTALL = $(top_srcdir)/build/shtool install -c
@@ -189,8 +189,8 @@ prof-use:
 
 .PHONY: all clean install distclean test prof-gen prof-clean prof-use
 .NOEXPORT:
-security.lo: /home/pinkiepunky/php-security/ext/security.c
-	$(LIBTOOL) --mode=compile $(CC) -Wdeclaration-after-statement -Werror -Wall -Wno-deprecated-declarations -I. -I/home/pinkiepunky/php-security/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/pinkiepunky/php-security/ext/security.c -o security.lo 
+security.lo: /Users/aberope/php-security/ext/security.c
+	$(LIBTOOL) --mode=compile $(CC) -Wdeclaration-after-statement -Werror -Wall -Wno-deprecated-declarations -I. -I/Users/aberope/php-security/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/aberope/php-security/ext/security.c -o security.lo 
 $(phplibdir)/security.la: ./security.la
 	$(LIBTOOL) --mode=install cp ./security.la $(phplibdir)
 

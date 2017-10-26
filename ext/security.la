@@ -8,13 +8,13 @@
 dlname='security.so'
 
 # Names of this library.
-library_names='security.so security.so security.so'
+library_names='security.so security.so'
 
 # The name of the static archive.
 old_library=''
 
 # Linker flags that can not go in dependency_libs.
-inherited_linker_flags=''
+inherited_linker_flags=' '
 
 # Libraries that this one depends upon.
 dependency_libs=''
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/pinkiepunky/php-security/ext/modules'
+libdir='/Users/aberope/php-security/ext/modules'

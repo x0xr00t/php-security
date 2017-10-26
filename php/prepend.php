@@ -1,4 +1,9 @@
 <?php
+/*
+ * php-security by Devopensource Security Team
+ *
+ * Coder: Abel Romero Pérez <abel.romero@devopensource.com>
+ */
 
 include_once '/etc/php/mods-available/security/slackbot.php';
 
@@ -22,12 +27,12 @@ function security_is_execution_allowed()
   }
   // log fail Attempt
   $log = "php-security: ".
-  "the following file tried to execute (a) shell command(s): ". 
+  "the following file tried to execute (a) shell command(s): ".
   $file . PHP_EOL;
   //error_log($log, 1, $admin);
   //error_log($log, 0);
   syslog(LOG_WARNING, $log);
-  slackbot_log($log);
+  //slackbot_log($log);
   // deny execution
   return false;
 }

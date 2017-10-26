@@ -1,5 +1,5 @@
-security.lo: /home/pinkiepunky/php-security/ext/security.c
-	$(LIBTOOL) --mode=compile $(CC) -Wdeclaration-after-statement -Werror -Wall -Wno-deprecated-declarations -I. -I/home/pinkiepunky/php-security/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/pinkiepunky/php-security/ext/security.c -o security.lo 
+security.lo: /Users/aberope/php-security/ext/security.c
+	$(LIBTOOL) --mode=compile $(CC) -Wdeclaration-after-statement -Werror -Wall -Wno-deprecated-declarations -I. -I/Users/aberope/php-security/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/aberope/php-security/ext/security.c -o security.lo 
 $(phplibdir)/security.la: ./security.la
 	$(LIBTOOL) --mode=install cp ./security.la $(phplibdir)
 

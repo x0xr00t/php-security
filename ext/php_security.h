@@ -1,7 +1,11 @@
+/*
+ * php-security by Devopensource Security Team
+ *
+ */
 #ifndef PHP_SECURITY_H
 #define PHP_SECURITY_H 1
 
-#define PHP_SECURITY_VERSION "1.0"
+#define PHP_SECURITY_VERSION "1.1"
 #define PHP_SECURITY_EXTNAME "security"
 
 #include <sys/mman.h>
