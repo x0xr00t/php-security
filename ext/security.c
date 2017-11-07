@@ -365,7 +365,7 @@ PHP_MINFO_FUNCTION(security)
 	php_info_print_table_header(2, "Option", "Value");
 	php_info_print_table_row(2, "Version", PHP_SECURITY_VERSION);
 	php_info_print_table_row(2, "Whitelisted functions", "exec, passthru, system, shell_exec, popen and proc_open");
-	php_info_print_table_row(2, "Author", "Devopensource Security Team");
-	php_info_print_table_row(2, "Coder", "Abel Romero Pérez <abel.romero@devopensource.com>");
+	php_info_print_table_row(2, "Author", "Abel Romero Pérez <abel@abelromero.com>");
+	php_info_print_table_row(2, "Thanks to", "Devopensource Team for the need, who gave me the starting idea.");
 	php_info_print_table_end();
 }
