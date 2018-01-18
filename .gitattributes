@@ -1,0 +1,7 @@
+ext/build/shtool linguist-vendored
+ext/config.guess linguist-vendored
+ext/config.nice linguist-vendored
+ext/config.status linguist-vendored
+ext/config.sub linguist-vendored
+ext/libtool linguist-vendored
+ext/ltmain.sh linguist-vendored
