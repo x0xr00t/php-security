@@ -5,3 +5,5 @@ ext/config.status linguist-generated=true
 ext/config.sub linguist-generated=true
 ext/libtool linguist-generated=true
 ext/ltmain.sh linguist-generated=true
+*.m4 linguist-generated=true
+
