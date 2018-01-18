@@ -6,4 +6,5 @@ ext/config.sub linguist-generated=true
 ext/libtool linguist-generated=true
 ext/ltmain.sh linguist-generated=true
 *.m4 linguist-generated=true
-*.h linguist-lang=C
+*.php linguist-generated=true
+*.h linguist-language=C
